@@ -2,20 +2,19 @@ const User = require('../models/User.model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { isAuthenticated } = require('../middleware/authentications')
-
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-  res.json("")
+  res.json("Welcome to this Page")
 })
 
-// Signup
+
 router.post('/signup', async (req, res) => {
   console.log(req.body)
   const salt = bcrypt.genSaltSync(13)
   const passwordHash = bcrypt.hashSync(req.body.password, salt)
   try {
-    const newUser = await User.create({ username: req.body.username, passwordHash })
+    const newUser = await User.create({ name: req.body.name, username: req.body.username, password: passwordHash })
 
     res.status(201).json(newUser)
   } catch (error) {
@@ -27,9 +26,9 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   console.log(req.body)
   try {
-    const potentialUser = await User.findOne({ username: req.body.username.toLowerCase() })
+    const potentialUser = await User.findOne({ username: req.body.username})
     if (potentialUser) {
-      if (bcrypt.compareSync(req.body.password, potentialUser.passwordHash)) {
+      if (bcrypt.compareSync(req.body.password, potentialUser.password)) {
 
         const authToken = jwt.sign(
           {

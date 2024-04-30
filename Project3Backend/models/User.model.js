@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-// TODO: Please make sure you edit the Book model to whatever makes sense in this case
-const bookSchema = new Schema(
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -19,11 +18,10 @@ const bookSchema = new Schema(
     },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 )
 
-const Book = model('Book', bookSchema)
+const User = model('User', userSchema)
 
-module.exports = Book
+module.exports = User;
