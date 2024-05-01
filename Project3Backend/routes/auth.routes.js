@@ -19,7 +19,11 @@ router.post('/signup', async (req, res) => {
     res.status(201).json(newUser)
   } catch (error) {
     console.log(error)
+    if(error.code === 11000){
+      res.status(400).json({message: 'Username already in use'})
+    }else {
     res.status(500).json(error)
+    }
   }
 })
 
