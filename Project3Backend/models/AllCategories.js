@@ -16,7 +16,13 @@ const categorySchema = new Schema(
       type: String,
       required: [true, 'Condition is required.'],
     },
-    
+    Image: {
+      type: String, 
+    },
+    Location: {
+      type: String, 
+      required: [true, 'Cost is required.'],
+    }
   },
   {
     timestamps: true,

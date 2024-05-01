@@ -7,4 +7,10 @@ router.get('/', (req, res) => {
 const productRoutes = require('./product.routes')
 router.use('/products', productRoutes)
 
-module.exports = router
+const eventRoutes = require('./event.routes')
+router.use('/event', eventRoutes )
+
+const volunteerRoutes = require('./People.routes')
+router.use('/volunteer', volunteerRoutes )
+
+module.exports = router;

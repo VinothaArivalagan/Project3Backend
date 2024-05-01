@@ -1,9 +1,7 @@
 const Product = require ('../models/AllCategories')
 const router = require('express').Router()
 
-// router.get('/', (req, res) => {
-//   res.json('All good in products')
-// })
+
 
 //GET all products
 router.get('/', async(req, res) => {
@@ -39,13 +37,13 @@ router.post('/', async(req, res) => {
 })
 
 //update one book
-router.put('/:productId', async (req,res) => {
+router.put('/:productId', async (req, res) => {
   try{
     const updatedProduct = await Product.findByIdAndUpdate(req.params.productId, req.body, {
       new : true,
       runValidators: true,
     })
-    res.status(200).json({message: 'Product updated successfully', product: updatesProduct})
+    res.status(200).json({message: 'Product updated successfully', product: updatedProduct})
   } catch(error) {
     console.error(error) 
     res.status(500).json(error)
