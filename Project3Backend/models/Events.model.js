@@ -13,12 +13,12 @@ const eventSchema = new Schema(
       trim: true,
     },
     Date : {
-      type: Number,
+      type: Date,
       required: [true, 'Date is required.'],
     },
-    Duration : {
+    Time : {
       type: String,
-      required: [true, 'Duration is required.'],
+      required: [true, 'Time is required.'],
     },
     OrganizedBy :{
       type: String,
