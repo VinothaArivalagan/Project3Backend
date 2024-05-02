@@ -7,6 +7,7 @@ const router = require('express').Router()
 router.get('/', async(req, res) => {
   try{
     const products = await Product.find()
+    console.log(products)
     res.status(200).json(products)
   } catch(error) {
     console.error(error) 
@@ -36,7 +37,6 @@ router.post('/', async(req, res) => {
   }
 })
 
-//update one book
 router.put('/:productId', async (req, res) => {
   try{
     const updatedProduct = await Product.findByIdAndUpdate(req.params.productId, req.body, {
