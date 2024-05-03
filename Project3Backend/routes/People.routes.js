@@ -7,6 +7,7 @@ const router = require('express').Router()
 router.get('/', async(req, res) => {
   try{
     const volunteers = await Volunteer.find()
+    console.log(volunteers)
     res.status(200).json(volunteers)
   } catch(error) {
     console.error(error) 
