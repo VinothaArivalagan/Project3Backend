@@ -2,26 +2,26 @@ const { Schema, model, Types } = require('mongoose')
 
 const categorySchema = new Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: [true, 'Name is required.'],
       trim: true,
     },
-    Year : {
+    year : {
       type: Number,
       required: [true, 'Year is required.'],
       trim: true,
     },
-    Condition : {
+    condition : {
       type: String,
       required: [true, 'Condition is required.'],
     },
-    Image: {
+    image: {
       type: String, 
     },
-    Location: {
+    location: {
       type: String, 
-      required: [true, 'Cost is required.'],
+      required: [true, 'Location is required.'],
     }
   },
   {

@@ -2,25 +2,25 @@ const { Schema, model, Types } = require('mongoose')
 
 const eventSchema = new Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: [true, 'Name is required.'],
       trim: true,
     },
-    Venue : {
+    venue : {
       type: String,
       required: [true, 'Venue is required.'],
       trim: true,
     },
-    Date : {
+    date : {
       type: Date,
       required: [true, 'Date is required.'],
     },
-    Time : {
+    time : {
       type: String,
       required: [true, 'Time is required.'],
     },
-    OrganizedBy :{
+    organizedBy :{
       type: String,
     }
   },

@@ -2,27 +2,24 @@ const { Schema, model, Types } = require('mongoose')
 
 const volunteerSchema = new Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: [true, 'Name is required.'],
       trim: true,
     },
-    Age : {
+    age : {
       type: Number,
       required: [true, 'Age is required.'],
       trim: true,
     },
-    Phone : {
+    phone : {
       type: Number,
       required: [true, 'Phone is required.'],
     },
-    Email : {
+    email : {
       type: String,
       required: [true, 'mail is required.'],
-    },
-    DateAvailability :{
-      type: String,
-    }
+    },  
   },
   {
     timestamps: true,
