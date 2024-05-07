@@ -1,5 +1,9 @@
 const Product = require ('../models/AllCategories')
 const router = require('express').Router()
+const multer = require('multer'); // Import multer for handling file uploads
+const upload = multer({ dest: 'uploads/' });
+const uploader = require('../middleware/cloudinary.config');
+
 
 
 
@@ -27,11 +31,22 @@ router.get('/:productId', async(req, res) => {
 })
 
 //POST
-router.post('/', async(req, res) => {
+router.post('/', uploader.single('image'), async(req, res) => {
   console.log(req.body)
+  
   try{
-    const newProduct = await Product.create(req.body)
+    console.log('file is: ', req.file.path);
+    if (!req.file) {
+      console.log("there was an error uploading the file");
+      next(new Error('No file uploaded!'));
+      return;
+    }
+    const { name, year, condition, location } = req.body;
+    const image = req.file.path;
+    const newProduct = new Product({ name, year, condition, image, location });
+    await newProduct.save();
     res.status(201).json(newProduct)
+    
   } catch(error) {
     console.error(error) 
     res.status(500).json(error)

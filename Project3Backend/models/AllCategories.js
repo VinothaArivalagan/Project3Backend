@@ -18,6 +18,7 @@ const categorySchema = new Schema(
     },
     image: {
       type: String, 
+      required: [true, 'Image is required.'],
     },
     location: {
       type: String, 
