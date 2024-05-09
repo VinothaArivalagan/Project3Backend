@@ -41,9 +41,9 @@ router.post('/', uploader.single('image'), async(req, res) => {
       next(new Error('No file uploaded!'));
       return;
     }
-    const { name, year, condition, location } = req.body;
+    const { name, year, condition, location, phone } = req.body;
     const image = req.file.path;
-    const newProduct = new Product({ name, year, condition, image, location });
+    const newProduct = new Product({ name, year, condition, image, location, phone });
     await newProduct.save();
     res.status(201).json(newProduct)
     

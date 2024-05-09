@@ -23,6 +23,10 @@ const categorySchema = new Schema(
     location: {
       type: String, 
       required: [true, 'Location is required.'],
+    },
+    phone: {
+      type: String,
+      required: [true, 'Phone is required.'],
     }
   },
   {
