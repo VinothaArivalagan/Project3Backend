@@ -1,5 +1,5 @@
+const { model } = require('mongoose')
 const Volunteer = require('../models/Volunteers.model')
-
 const router = require('express').Router()
 
 
@@ -56,7 +56,7 @@ router.put('/:volunteerId', async (req, res) => {
 //Delete
 router.delete('/:volunteerId', async (req,res) => {
   try{
-    await Product.findByIdAndDelete(req.params.volunteerId)
+    await Volunteer.findByIdAndDelete(req.params.volunteerId)
     res.status(204).send()
   } catch(error) {
     console.error(error) 
